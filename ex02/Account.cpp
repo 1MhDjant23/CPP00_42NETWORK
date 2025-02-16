@@ -6,11 +6,12 @@
 /*   By: mait-taj <mait-taj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:44:54 by mait-taj          #+#    #+#             */
-/*   Updated: 2025/02/06 10:21:09 by mait-taj         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:09:48 by mait-taj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
+#include <iostream>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -51,7 +52,7 @@ void	Account::_displayTimestamp( void ) {
 	local_time = localtime(&current);
 	std::string	timestamp;
 	timestamp.resize(80);
-	strftime(&timestamp[0], timestamp.size(), "%Y%m%d_%H%m%S", local_time);
+	strftime(&timestamp[0], timestamp.size(), "%Y%m%d_%H%M%S", local_time);
 	std::cout << timestamp;
 }
 

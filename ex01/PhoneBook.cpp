@@ -6,7 +6,7 @@
 /*   By: mait-taj <mait-taj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 20:50:29 by mait-taj          #+#    #+#             */
-/*   Updated: 2025/02/06 09:58:21 by mait-taj         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:58:37 by mait-taj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	geting_line(std::string &str)
 {
-	if (!getline(std::cin, str))
+	if ( !getline(std::cin, str) )
 		exit(EXIT_FAILURE);
-	while (str.empty())
+	while ( str.empty() )
 	{
 		std::cout << "fill this field to continue\n>";
 		if (!getline(std::cin, str))
@@ -26,14 +26,16 @@ void	geting_line(std::string &str)
 void	set_border(t_info type)
 {
 	if (type == TOP)
-		std::cout << " -------------------------------------------" << std::endl;
+		std::cout << " ___________________________________________" << std::endl;
 	else if (type == BOTTOM)
-		std::cout << "|-------------------------------------------|" << std::endl;
+		std::cout << "|__________|__________|__________|__________|" << std::endl;
 	else if (type == CENTER)
 		std::cout << "--------------------------------" << std::endl;
 }
 
 PhoneBook::PhoneBook() { }
+
+PhoneBook::~PhoneBook() { }
 
 void	PhoneBook::add_contact(int index) {
 	std::string	temp;
@@ -62,12 +64,10 @@ void	PhoneBook::display_all_contacts()
 {
 	int	index = 0;
 	set_border( TOP );
-	PRINT_PIPE;
-	std::cout
-		<< std::setw( 10 ) << std::right << "index" << '|' 
+	std::cout << "|" << std::setw( 10 ) << "index" << '|'
 		<< std::setw( 10 ) << "first name" << '|'
-		<< std::setw( 10 )<< "last name" << '|'
-		<< std::setw( 10 ) << "nickname" << '|' << std::endl;
+		<< std::setw( 10 ) << "last name" << '|'
+		<< std::setw( 10 ) << "nickname" << '|' << std::endl; 
 	set_border( BOTTOM );
 	while ( ++index <= 8 && arr[ index - 1 ].get_contact_info( FIRST_NAME ).length() > 0 )
 	{
@@ -83,21 +83,20 @@ void	PhoneBook::display_all_contacts()
 		set_border(BOTTOM);
 	}
 }
-
 void	PhoneBook::display_specific_contact( int index )
 {
-	if ( index < 1 && index > 8  )
+	if ( index < 1 || index > 8  )
 		std::cout << "Index is out of range {1,8}" << std::endl;
 	else
 	{
-		if ( arr[ index ].get_contact_info( FIRST_NAME ).length() == 0 ) {
-			std::cout << "\nContact `" << index + 1 << "` not found!"<< std::endl; 
+		if ( arr[ index - 1 ].get_contact_info( FIRST_NAME ).length() == 0 ) {
+			std::cout << "\nContact `" << index << "` not found!"<< std::endl; 
 			return ;
 		}
-		std::cout << arr[ index ].get_contact_info( FIRST_NAME ) << std::endl;
-		std::cout << arr[ index ].get_contact_info( LAST_NAME ) << std::endl;
-		std::cout << arr[ index ].get_contact_info( NICKNAME ) << std::endl;
-		std::cout << arr[ index ].get_contact_info( PHONE_NUMBER ) << std::endl;
-		std::cout << arr[ index ].get_contact_info( DARKEST_SECRET ) << std::endl;
+		std::cout << arr[ index - 1 ].get_contact_info( FIRST_NAME ) << std::endl;
+		std::cout << arr[ index - 1 ].get_contact_info( LAST_NAME ) << std::endl;
+		std::cout << arr[ index - 1 ].get_contact_info( NICKNAME ) << std::endl;
+		std::cout << arr[ index - 1 ].get_contact_info( PHONE_NUMBER ) << std::endl;
+		std::cout << arr[ index - 1 ].get_contact_info( DARKEST_SECRET ) << std::endl;
 	}
 }

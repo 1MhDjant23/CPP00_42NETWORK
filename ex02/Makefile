@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp
+%.o: %.cpp Account.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all:	$(NAME)

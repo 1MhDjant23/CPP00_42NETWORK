@@ -8,7 +8,7 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.o: %.cpp
+%.o: %.cpp 
 	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)

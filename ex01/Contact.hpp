@@ -6,13 +6,12 @@
 /*   By: mait-taj <mait-taj@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 21:42:36 by mait-taj          #+#    #+#             */
-/*   Updated: 2025/02/06 10:00:35 by mait-taj         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:57:18 by mait-taj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
-#include "PhoneBook.hpp"
 
 typedef	enum s_info
 {
@@ -36,6 +35,7 @@ class   Contact
         std::string _darkest_secret;
     public:
         Contact();
+        ~Contact();
         std::string get_contact_info( t_info type );
         void	    set_contact_info( t_info type, std::string info );
 };
